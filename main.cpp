@@ -69,10 +69,7 @@ std::vector<int> reRollDice(std::vector<int> dice)
     char input;
 
     std::cout << "Which dice would you like to keep? (Enter indices, e.g., 0 2 for dice 1 and 3): ";
-    for (size_t i = 0; i < dice.size(); ++i)
-    {
-        std::cout << i << ": " << dice[i] << "  ";
-    }
+    displayDice(dice);
     std::cout << std::endl;
 
     while (std::cin >> input)
@@ -96,12 +93,11 @@ std::vector<int> reRollDice(std::vector<int> dice)
     }
     return dice;
 }
-void displayDice(std::vector<int> dice, std::string playerName)
+void displayDice(std::vector<int> dice)
 {
-    std::cout << playerName << " has these dices: " << std::endl;
     for (int i = 0; i < 5; i++)
     {
-        std::cout << "dice " << i << " : " << dice.at(i) << std::endl;
+        std::cout << "Dice " << i << " : " << dice.at(i) << std::endl;
     }
 }
 bool gameMenu()
@@ -151,7 +147,8 @@ int main()
                     thisplayer.dices.push_back(rolldice());
                 }
                 thisplayer.dices = reRollDice(thisplayer.dices);
-                displayDice(thisplayer.dices, thisplayer.playerName);
+                std::cout << thisplayer.playerName << " has rolled:" << std::endl;
+                displayDice(thisplayer.dices);
             }
         }
     }
