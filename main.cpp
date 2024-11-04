@@ -5,6 +5,7 @@
 struct catagories;
 struct player;
 std::string setPlayerName(int i);
+void displayDice(std::vector<int> dice);
 struct player
 {
     std::string playerName;
@@ -68,7 +69,7 @@ std::vector<int> reRollDice(std::vector<int> dice)
     std::vector<bool> keep(dice.size(), false);
     char input;
 
-    std::cout << "Which dice would you like to keep? (Enter indices, e.g., 0 2 for dice 1 and 3): ";
+    std::cout << "Which dice would you like to keep? (Enter indices, e.g., 0 2 for dice 1 and 3): " << std::endl;
     displayDice(dice);
     std::cout << std::endl;
 
@@ -95,7 +96,7 @@ std::vector<int> reRollDice(std::vector<int> dice)
 }
 void displayDice(std::vector<int> dice)
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < dice.size(); i++)
     {
         std::cout << "Dice " << i << " : " << dice.at(i) << std::endl;
     }
